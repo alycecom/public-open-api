@@ -1,0 +1,37 @@
+openapi: '3.0.3'
+
+info:
+  title: "Contacts API"
+  description: "Contacts API description"
+  contact:
+    name: Alyce
+    email: support@alyce.com
+    url: https://alyce.com
+  version: '0.1.0'
+
+servers:
+  - url: https://api.alyce.com
+    description: Modern local version of api. Can be deployed via docker compose.
+
+tags:
+  - name: Contacts
+    description: |
+      All endpoints related to contacts
+  - name: Reporting
+    description: |
+      Endpoints to get the needed reports via API
+
+paths:
+  /v1/reporting/gifts:
+    $ref: 'reporting/paths.yaml#/getGiftInvitationReport'
+  /v1/contacts:
+    $ref: 'contacts/paths.yaml#/contacts'
+  /v1/contacts/{contactId}:
+    $ref: 'contacts/paths.yaml#/contact'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

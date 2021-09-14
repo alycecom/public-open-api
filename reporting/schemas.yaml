@@ -1,0 +1,148 @@
+giftInvitationReportGiftsList:
+  type: object
+  description: |
+    The list of gifts per organisation
+  required:
+    - data
+    - pagination
+  properties:
+    data:
+      type: array
+      items:
+        $ref: '#/giftRow'
+    pagination:
+      $ref: '../common/pagination.yaml#/paginatedResponse'
+
+giftRow:
+  type: object
+  description: |
+    One gift row
+  required:
+    - teamName
+    - campaignName
+    - gift
+  properties:
+    teamName:
+      type: string
+      description: |
+        Name of the senders' team
+      nullable: false
+      example: "Alyce: Customer Success Team"
+    campaignName:
+      type: string
+      description: |
+        Name of the campaign where gift was created
+      nullable: false
+      example: "Alyce 2020 CS Holiday Gifts"
+    gift:
+      $ref: '#/giftInfo'
+
+giftInfo:
+  type: object
+  required:
+    - status
+    - country
+    - invitationType
+    - recipientClaimResult
+    - sentProduct
+    - claimedProduct
+    - createdAt
+    - sentAt
+    - viewedAt
+    - claimedAt
+    - expiredAt
+  properties:
+    status:
+      type: string
+      description: |
+        Gift status string
+      nullable: false
+      example: "Sent"
+    country:
+      type: string
+      description: |
+        The country of the gift it was sent to
+      nullable: false
+      example: "United States"
+    invitationType:
+      type: string
+      description: |
+        The delivery method of the gift
+      nullable: true
+      example: "Physical Box"
+    recipientClaimResult:
+      type: string
+      enum: [ "accepted", "exchanged", "donated" ]
+      nullable: true
+      example: "accepted"
+    sentProduct:
+      allOf:
+        - $ref: '#/productInfo'
+        - description: |
+            Object of the product that was sent by recipient
+        - nullable: true
+    claimedProduct:
+      allOf:
+        - $ref: '#/productInfo'
+        - description: |
+            Object of the product that was claimed by recipient
+        - nullable: true
+    createdAt:
+      allOf:
+        - $ref: '../common/iso8601.yaml#/dateTime'
+        - nullable: false
+    sentAt:
+      allOf:
+        - $ref: '../common/iso8601.yaml#/dateTime'
+        - nullable: true
+    viewedAt:
+      allOf:
+        - $ref: '../common/iso8601.yaml#/dateTime'
+        - nullable: true
+    claimedAt:
+      allOf:
+        - $ref: '../common/iso8601.yaml#/dateTime'
+        - nullable: true
+    expiredAt:
+      allOf:
+        - $ref: '../common/iso8601.yaml#/dateTime'
+        - nullable: true
+
+productInfo:
+  type: object
+  required:
+    - name
+    - type
+    - price
+  properties:
+    name:
+      type: string
+      description: |
+        Product name
+      example: "$50 Grubhub eGift Card"
+    type:
+      type: string
+      description: |
+        Product type
+      enum: [ "Physical", "Subscription Box", "On-Demand Service", "Experience", "Donation", "Gift Card", "Branded Product" ]
+      example: "Physical"
+    price:
+      $ref: '#/price'
+
+price:
+  type: object
+  description: |
+    Price object that contains money amount and currency
+  required:
+    - amount
+    - currency
+  properties:
+    amount:
+      type: number
+      format: float
+      example: 57.5
+      nullable: false
+    currency:
+      type: string
+      example: "USD"
+      nullable: false

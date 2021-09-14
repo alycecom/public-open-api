@@ -9,11 +9,11 @@ rangeDateTime:
     If any of property is ommited, there should not be any default value (no filtration)
   properties:
     from:
-      $ref: './iso8601.yaml#/dateTime'
+      $ref: 'iso8601.yaml#/dateTime'
       description: |
         Oldest allowed date should be at least 2015-12-01 (Alyce foundation date)
     to:
-      $ref: './iso8601.yaml#/dateTime'
+      $ref: 'iso8601.yaml#/dateTime'
   additionalProperties: false
   example:
     from: '2021-09-07T00:00:00Z'

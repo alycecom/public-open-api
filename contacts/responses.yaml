@@ -1,0 +1,65 @@
+ContactListResponse:
+  type: object
+  description: |
+    The list of contacts
+  required:
+    - data
+    - pagination
+  properties:
+    data:
+      type: array
+      items:
+        $ref: '#/Contact'
+    pagination:
+      $ref: '../common/pagination.yaml#/paginatedResponse'
+
+ContactResponse:
+  type: object
+  description: |
+    The specific contact
+  required:
+    - data
+  properties:
+    data:
+      $ref: '#/Contact'
+
+Contact:
+  type: object
+  description: |
+    The object that contains all the information about the contact
+  required:
+    - id
+    - email
+    - phone
+    - firstName
+    - lastName
+    - employment
+    - countryCode
+    - customFields
+    - createdAt
+    - updatedAt
+  properties:
+    id:
+      type: string
+      description: |
+        Unique id of the contact
+      example: "5fb4c98d978651651321321a"
+      nullable: false
+    email:
+      $ref: './parameters.yaml#/email'
+    phone:
+      $ref: './parameters.yaml#/phone'
+    firstName:
+      $ref: './parameters.yaml#/firstName'
+    lastName:
+      $ref: './parameters.yaml#/lastName'
+    employment:
+      $ref: './parameters.yaml#/employment'
+    countryCode:
+      $ref: './parameters.yaml#/countryCode'
+    customFields:
+      $ref: './parameters.yaml#/customFields'
+    createdAt:
+      $ref: '../common/iso8601.yaml#/dateTime'
+    updatedAt:
+      $ref: '../common/iso8601.yaml#/dateTime'

@@ -1,0 +1,122 @@
+NoContent: # 204
+  description: The server has successfully fulfilled the request and that there is no additional content to send in the response payload body.
+
+BadRequestByGuidelines: # 400
+  description: |
+    The request could not be fulfilled because it was composed incorrectly
+  content:
+    application/json:
+      schema:
+        $ref: './responses.yaml#/ErrorByGuidelines'
+
+Unauthorized: # 401
+  description: The client passed in the invalid access token. Client should refresh the token and then try again.
+
+UnauthorizedErrorByGuideline: # 403
+  description: User not allowed to make this action
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - error
+        properties:
+          error:
+            type: object
+            required:
+              - message
+              - code
+            properties:
+              message:
+                type: string
+                description: |
+                  General description of what happened. It 's basically a global error message
+              code:
+                type: string
+                description: |
+                  String shortcut for the message above. It allows the client to override the message to be more
+                  verbose to a user
+
+ResourceNotFoundByGuideline: # 404
+  description: Expected resource not found
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - error
+        properties:
+          error:
+            type: object
+            required:
+              - message
+              - code
+            properties:
+              message:
+                type: string
+                description: |
+                  General description of what happened. It 's basically a global error message
+              code:
+                type: string
+                description: |
+                  String shortcut for the message above. It allows the client to override the message to be more
+                  verbose to a user
+
+UnprocessableEntityByGuidelines: # 422
+  description: |
+    The request cannot be performed due to business logic/model validation constraints
+  content:
+    application/json:
+      schema:
+        $ref: './responses.yaml#/ErrorByGuidelines'
+
+ServerSideErrorByGuideline: # 500
+  description: Server side error
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - error
+        properties:
+          error:
+            type: object
+            required:
+              - message
+              - code
+            properties:
+              message:
+                type: string
+                description: |
+                  General description of what happened. It 's basically a global error message
+              code:
+                type: string
+                description: |
+                  String shortcut for the message above. It allows the client to override the message to be more
+                  verbose to a user
+
+ErrorByGuidelines:
+  type: object
+  required:
+    - error
+  properties:
+    error:
+      type: object
+      required:
+        - code
+        - errors
+        - message
+      properties:
+        code:
+          type: string
+          description: Machine readable name
+          example: RESOURCE_VALIDATION_ERROR
+        errors:
+          type: object
+          description: |
+            Object where properties are the fields caused the error and values are error description
+          example:
+            name: property name is required
+        message:
+          type: string
+          description: General description of what happened. It 's basically a global error message

@@ -1,0 +1,134 @@
+contacts:
+  get:
+    operationId: getContacts
+    tags:
+      - Contacts
+    summary: Get contacts list
+    description: |
+      Get contacts list with filtering and pagination
+    parameters:
+      - $ref: '../common/pagination.yaml#/paginatedQuery'
+    responses:
+      '200':
+        description: |
+          Contact list was successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: 'responses.yaml#/ContactListResponse'
+      '400':
+        $ref: '../common/responses.yaml#/BadRequestByGuidelines'
+      '401':
+        $ref: '../common/responses.yaml#/Unauthorized'
+      '403':
+        $ref: '../common/responses.yaml#/UnauthorizedErrorByGuideline'
+      '500':
+        $ref: '../common/responses.yaml#/ServerSideErrorByGuideline'
+  post:
+    operationId: createContact
+    tags:
+      - Contacts
+    summary: Create new contact
+    description: |
+      Create new contact
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas.yaml#/ContactCreateRequest'
+    responses:
+      '201':
+        description: |
+          Contact was successfully created
+        content:
+          application/json:
+            schema:
+              $ref: 'responses.yaml#/ContactResponse'
+      '400':
+        $ref: '../common/responses.yaml#/BadRequestByGuidelines'
+      '401':
+        $ref: '../common/responses.yaml#/Unauthorized'
+      '403':
+        $ref: '../common/responses.yaml#/UnauthorizedErrorByGuideline'
+      '500':
+        $ref: '../common/responses.yaml#/ServerSideErrorByGuideline'
+
+contact:
+  get:
+    operationId: getContact
+    tags:
+      - Contacts
+    summary: Get contact info
+    description: |
+      Get contact info
+    parameters:
+      $ref: 'parameters.yaml#/contactId'
+    responses:
+      '200':
+        description: |
+          Contact information was successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: 'responses.yaml#/ContactResponse'
+      '400':
+        $ref: '../common/responses.yaml#/BadRequestByGuidelines'
+      '401':
+        $ref: '../common/responses.yaml#/Unauthorized'
+      '403':
+        $ref: '../common/responses.yaml#/UnauthorizedErrorByGuideline'
+      '500':
+        $ref: '../common/responses.yaml#/ServerSideErrorByGuideline'
+  patch:
+    operationId: updateContact
+    tags:
+      - Contacts
+    summary: Update contact info
+    description: |
+      Update contact info
+    parameters:
+      $ref: 'parameters.yaml#/contactId'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas.yaml#/ContactUpdateRequest'
+    responses:
+      '200':
+        description: |
+          Contact was successfully updated
+        content:
+          application/json:
+            schema:
+              $ref: 'responses.yaml#/ContactResponse'
+      '400':
+        $ref: '../common/responses.yaml#/BadRequestByGuidelines'
+      '401':
+        $ref: '../common/responses.yaml#/Unauthorized'
+      '403':
+        $ref: '../common/responses.yaml#/UnauthorizedErrorByGuideline'
+      '500':
+        $ref: '../common/responses.yaml#/ServerSideErrorByGuideline'
+  delete:
+    operationId: deleteContact
+    tags:
+      - Contacts
+    summary: Delete contact
+    description: |
+      Delete contact
+    parameters:
+      $ref: 'parameters.yaml#/contactId'
+    responses:
+      '204':
+        description: |
+          Contact was successfully deleted
+      '400':
+        $ref: '../common/responses.yaml#/BadRequestByGuidelines'
+      '401':
+        $ref: '../common/responses.yaml#/Unauthorized'
+      '403':
+        $ref: '../common/responses.yaml#/UnauthorizedErrorByGuideline'
+      '500':
+        $ref: '../common/responses.yaml#/ServerSideErrorByGuideline'

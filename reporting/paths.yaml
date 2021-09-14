@@ -1,0 +1,26 @@
+getGiftInvitationReport:
+  get:
+    operationId: getGiftInvitationReport
+    tags:
+      - Reporting
+    summary: Get gift invitation report
+    description: |
+      Information about the organisation gifts
+    parameters:
+      - $ref: '../common/filters.yaml#/filtersQuery'
+      - $ref: '../common/pagination.yaml#/paginatedQuery'
+    responses:
+      '200':
+        description: The list of gifts created in the organisation
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas.yaml#/giftInvitationReportGiftsList'
+      '400':
+        $ref: '../common/responses.yaml#/BadRequestByGuidelines'
+      '401':
+        $ref: '../common/responses.yaml#/Unauthorized'
+      '403':
+        $ref: '../common/responses.yaml#/UnauthorizedErrorByGuideline'
+      '500':
+        $ref: '../common/responses.yaml#/ServerSideErrorByGuideline'

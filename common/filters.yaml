@@ -10,8 +10,8 @@ filtersQuery:
     type: object
     properties:
       dateRange:
-        $ref: './filter.yaml#/rangeDateTime'
+        $ref: 'filter.yaml#/rangeDateTime'
       teamIds:
-        $ref: './filter.yaml#/teamIdsFilter'
+        $ref: 'filter.yaml#/teamIdsFilter'
       campaignIds:
-        $ref: './filter.yaml#/campaignIdsFilter'
+        $ref: 'filter.yaml#/campaignIdsFilter'

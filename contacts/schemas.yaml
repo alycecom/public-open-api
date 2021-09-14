@@ -1,0 +1,41 @@
+ContactCreateRequest:
+  type: object
+  required:
+    - email
+    - phone
+    - firstName
+    - lastName
+    - employment
+    - countryCode
+    - customFields
+  properties:
+    email:
+      $ref: './parameters.yaml#/email'
+    phone:
+      $ref: './parameters.yaml#/phone'
+    firstName:
+      $ref: './parameters.yaml#/firstName'
+    lastName:
+      $ref: './parameters.yaml#/lastName'
+    employment:
+      $ref: './parameters.yaml#/employment'
+    countryCode:
+      $ref: './parameters.yaml#/countryCode'
+    customFields:
+      $ref: './parameters.yaml#/customFields'
+
+ContactUpdateRequest:
+  type: object
+  properties:
+    phone:
+      $ref: './parameters.yaml#/phone'
+    firstName:
+      $ref: './parameters.yaml#/firstName'
+    lastName:
+      $ref: './parameters.yaml#/lastName'
+    employment:
+      $ref: './parameters.yaml#/employment'
+    countryCode:
+      $ref: './parameters.yaml#/countryCode'
+    customFields:
+      $ref: './parameters.yaml#/customFields'

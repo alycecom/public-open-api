@@ -1,0 +1,85 @@
+# Path parameters
+
+contactId:
+  - in: path
+    name: contactId
+    required: true
+    description: |
+      Unique ID of the contact
+    schema:
+      type: string
+      example: "5fb4c98d978651651321321a"
+
+# Object parameters
+
+email:
+  type: string
+  format: email
+  description: |
+    Unique email of the contact
+  nullable: false
+
+phone:
+  type: string
+  description: |
+    Phone number of the contact
+  example: "888-861-6608"
+  nullable: true
+
+firstName:
+  type: string
+  description: |
+    First name of the contact
+  example: "Aleksei"
+  nullable: false
+
+lastName:
+  type: string
+  description: |
+    Last name of the contact
+  example: "Budaev"
+  nullable: false
+
+employment:
+  type: string
+  description: |
+    Employment of the contact
+  example: "Alyce"
+  nullable: false
+
+countryCode:
+  type: string
+  description: |
+    Country code of the contacts' country
+  enum: [ "US", "CA", "UK", "AU", "AT", "BE", "DK", "FI", "FR", "DE", "IND", "IE", "IT", "LU", "MX", "NL", "PL", "PT", "SG", "ES", "SE", "CH" ]
+  example: "US"
+  nullable: false
+
+customFields:
+  type: array
+  description: |
+    The list of custom contact fields specified in settings
+  nullable: true
+  items:
+    $ref: '#/customField'
+
+customField:
+  type: object
+  description: |
+    Custom contact field
+  required:
+    - name
+    - value
+  properties:
+    name:
+      type: string
+      description: |
+        Name of the custom field
+      nullable: false
+      example: "recipientTitle"
+    value:
+      type: string
+      description: |
+        Value of the custom field
+      nullable: false
+      example: "Backend Engineer"
