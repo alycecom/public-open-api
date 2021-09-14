@@ -6,3 +6,6 @@ validate:
 		-v $(shell git rev-parse --show-toplevel):/root \
 		-w /root $(SPECTRAL_IMAGE_NAME) \
 		lint --fail-severity=warn --ruleset=$(SPECTRAL_RULESET_PATH) --verbose openapi.yaml
+
+build:
+	redoc-cli bundle -o index.html openapi.yaml
