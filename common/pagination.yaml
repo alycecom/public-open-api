@@ -1,0 +1,54 @@
+# Schemas using in requests
+
+paginatedQuery:
+  name: pagination
+  in: query
+  style: deepObject
+  required: false
+  explode: true
+  description: |
+    Query to paginate response
+  schema:
+    type: object
+    properties:
+      offset:
+        $ref: '#/offset'
+      limit:
+        $ref: '#/limit'
+
+# Schemas using in responses
+
+paginatedResponse:
+  type: object
+  required:
+    - total
+    - offset
+    - limit
+  properties:
+    total:
+      $ref: '#/total'
+    offset:
+      $ref: '#/offset'
+    limit:
+      $ref: '#/limit'
+
+total:
+  type: integer
+  description: |
+    Shows the total amount of records
+  nullable: false
+  example: 100
+
+offset:
+  type: integer
+  description: |
+    Pagination offset
+  nullable: false
+  example: 100
+
+limit:
+  type: integer
+  description: |
+    Shows the amount of records at the returned page
+  nullable: false
+  example: 10

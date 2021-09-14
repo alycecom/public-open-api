@@ -1,0 +1,36 @@
+rangeDateTime:
+  type: object
+  title: Date range
+  description: |
+    Describes dateTime range.
+    `From` date included to period by default
+    `To` date excluded from selected period by default
+    It should make sense record like "from 2020-01-01T00:00:00 to 2020-01-01T00:00:00" (one day)
+    If any of property is ommited, there should not be any default value (no filtration)
+  properties:
+    from:
+      $ref: './iso8601.yaml#/dateTime'
+      description: |
+        Oldest allowed date should be at least 2015-12-01 (Alyce foundation date)
+    to:
+      $ref: './iso8601.yaml#/dateTime'
+  additionalProperties: false
+  example:
+    from: '2021-09-07T00:00:00Z'
+    to: '2021-09-07T23:59:59Z'
+
+teamIdsFilter:
+  type: array
+  description: |
+    List of team ids to filter report by
+  items:
+    type: integer
+  example: [ 1,2,3 ]
+
+campaignIdsFilter:
+  type: array
+  description: |
+    List of campaign ids to filter report by
+  items:
+    type: integer
+  example: [ 1,2,3 ]

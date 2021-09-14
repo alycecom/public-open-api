@@ -1,0 +1,17 @@
+filtersQuery:
+  name: filters
+  in: query
+  required: false
+  style: deepObject
+  explode: true
+  description: |
+    Filters applying to gifts table
+  schema:
+    type: object
+    properties:
+      dateRange:
+        $ref: './filter.yaml#/rangeDateTime'
+      teamIds:
+        $ref: './filter.yaml#/teamIdsFilter'
+      campaignIds:
+        $ref: './filter.yaml#/campaignIdsFilter'
