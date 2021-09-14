@@ -1,8 +1,8 @@
 openapi: '3.0.3'
 
 info:
-  title: "Contacts API"
-  description: "Contacts API description"
+  title: "Alyce Public API"
+  description: "We will add more details later before publishing the V1 version of our API"
   contact:
     name: Alyce
     email: support@alyce.com
@@ -11,7 +11,7 @@ info:
 
 servers:
   - url: https://api.alyce.com
-    description: Modern local version of api. Can be deployed via docker compose.
+    description: Entrypoint for API calls
 
 tags:
   - name: Contacts
