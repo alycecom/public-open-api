@@ -91,22 +91,27 @@ giftInfo:
       allOf:
         - $ref: '../common/iso8601.yaml#/dateTime'
         - nullable: false
+        - example: "2021-09-07T12:00:00Z"
     sentAt:
       allOf:
         - $ref: '../common/iso8601.yaml#/dateTime'
         - nullable: true
+        - example: "2021-09-07T12:00:00Z"
     viewedAt:
       allOf:
         - $ref: '../common/iso8601.yaml#/dateTime'
         - nullable: true
+        - example: "2021-09-07T12:00:00Z"
     claimedAt:
       allOf:
         - $ref: '../common/iso8601.yaml#/dateTime'
         - nullable: true
+        - example: "2021-09-07T12:00:00Z"
     expiredAt:
       allOf:
         - $ref: '../common/iso8601.yaml#/dateTime'
         - nullable: true
+        - example: "2021-09-07T12:00:00Z"
 
 productInfo:
   type: object
