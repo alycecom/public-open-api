@@ -1,7 +1,7 @@
 # Alyce Public API
 
 ## Public API specification
-https://alycecom.github.com/public-open-api
+https://alycecom.github.io/public-open-api
 
 ## Authentication Flow
 ![Image of authentication flow](https://alycecom.github.io/public-open-api/images/scheme.svg)
